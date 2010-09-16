@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<flattr>
+	<version>
+		0.0.1
+	</version>
+	<user>
+		<id>
+			202
+		</id>
+		<username>
+			test303
+		</username>
+		<city>
+			Flattr.com
+		</city>
+		<country>
+			Sweden
+		</country>
+		<description>
+			this is a flattr test account
+		</description>
+		<thingcount>
+			2
+		</thingcount>
+		<language>
+			en_GB
+		</language>
+
+	</user>
+
+</flattr>
+

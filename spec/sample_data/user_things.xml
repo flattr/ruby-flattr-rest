@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<flattr>
+	<version>
+		0.0.1
+	</version>
+	<thing>
+		<id>
+			e01957d12b703d8fa1e186e7f52c7ff7
+		</id>
+		<int_id>
+			62392
+		</int_id>
+		<created>
+			1284566106
+		</created>
+		<language>
+			en_GB
+		</language>
+		<url>
+			http://developers.flattr.net
+		</url>
+		<title>
+			The flattr developer site
+		</title>
+		<story>
+			<![CDATA[The developer corner for flattr integration developers.]]>
+
+		</story>
+		<clicks>
+			0
+		</clicks>
+		<user>
+			<id>
+				202
+			</id>
+			<username>
+				test303
+			</username>
+
+		</user>
+		<category>
+			<id>
+				rest
+			</id>
+			<name>
+				The rest
+			</name>
+
+		</category>
+		<status>
+			owner
+		</status>
+
+	</thing>
+	<thing>
+		<id>
+			e1c6d59abe633b4ad59fc753ca36e6e8
+		</id>
+		<int_id>
+			695
+		</int_id>
+		<created>
+			1272620596
+		</created>
+		<language>
+			en_GB
+		</language>
+		<url>
+			http://testingtesting.com
+		</url>
+		<title>
+			Flattr is testing
+		</title>
+		<story>
+			<![CDATA[This is a test!]]>
+
+		</story>
+		<clicks>
+			0
+		</clicks>
+		<user>
+			<id>
+				202
+			</id>
+			<username>
+				test303
+			</username>
+
+		</user>
+		<category>
+			<id>
+				text
+			</id>
+			<name>
+				Written text
+			</name>
+
+		</category>
+		<status>
+			owner
+		</status>
+
+	</thing>
+
+</flattr>
+

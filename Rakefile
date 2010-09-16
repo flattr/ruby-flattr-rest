@@ -4,14 +4,16 @@ require 'rake'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name = "ruby-flattr-rest"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.name = "flattr_rest"
+    gem.summary = %Q{Flattr.com rest api client}
+    gem.description = %Q{An OAuth wrapper to make it easier to consume the flattr rest api}
     gem.email = "joel.hansson@gmail.com"
-    gem.homepage = "http://github.com/qzio/ruby-flattr-rest"
+    gem.homepage = "http://github.com/flattr/ruby-flattr-rest"
     gem.authors = ["Joel Hansson"]
     gem.add_development_dependency "rspec", ">= 1.2.9"
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+    gem.add_dependency "oauth"
+    gem.add_dependency "nokogiri"
+    gem.files =  FileList["[A-Z]*.*", "{bin,generators,lib,test,spec}/**/*"]
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
@@ -39,7 +41,11 @@ Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""
 
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "ruby-flattr-rest #{version}"
+  rdoc.title = "flattr_rest #{version}"
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
+end
+
+task :clean do
+  system "rm pkg/*"
 end
