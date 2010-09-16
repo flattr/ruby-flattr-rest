@@ -1,6 +1,12 @@
 = ruby-flattr-rest
 
-Description goes here.
+flattr-rest make it easier to use the flattr.com rest api.
+
+It depends on the oauth gem and there is an example rails app at http://github.com/qzio/flattr-rails-example
+
+
+
+
 
 == Note on Patches/Pull Requests
  
@@ -14,4 +20,4 @@ Description goes here.
 
 == Copyright
 
-Copyright (c) 2010 Joel Hansson. See LICENSE for details.
+Copyright (c) 2010 Flattr. See LICENSE for details.
