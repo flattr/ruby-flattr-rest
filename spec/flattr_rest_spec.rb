@@ -3,8 +3,8 @@ require 'spec_helper'
 describe FlattrRest do
   before do
     @config = {
-      :key => "jX5kXjDzSVMGCTgDXKUGujH37wszlcgv0cFOl8d3UPAnzHQmhATBKruHNM7YPejG",
-      :secret => "gPlsOomy4MMujsGqTqStHd1kQY9v3j29YdrCsE1mgDGpWdGGtp01sRb8Gauzkmz8",
+      :key => "the key goes here",
+      :secret => "the secret goes here",
       :site => 'http://api.flattr.local'
     }
     @sample_xml = {
