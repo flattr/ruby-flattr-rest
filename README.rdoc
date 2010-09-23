@@ -2,11 +2,7 @@
 
 flattr-rest make it easier to use the flattr.com rest api.
 
-It depends on the oauth gem and there is an example rails app at http://github.com/qzio/flattr-rails-example
-
-
-
-
+It depends on the oauth gem and there is an example rails app at http://github.com/qzio/example-flattr-rails
 
 == Note on Patches/Pull Requests
  
