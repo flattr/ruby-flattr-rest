@@ -10,6 +10,8 @@ rescue LoadError
 end
 require 'flattr_rest/flattr_rest'
 require 'flattr_rest/exception'
-require 'flattr_rest/amodel'
+require 'flattr_rest/model'
 require 'flattr_rest/user'
 require 'flattr_rest/thing'
+require 'flattr_rest/category'
+require 'flattr_rest/language'

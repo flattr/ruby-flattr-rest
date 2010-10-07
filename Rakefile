@@ -49,3 +49,9 @@ end
 task :clean do
   system "rm pkg/*"
 end
+
+task :reinstall do
+  system "rake clean"
+  system "rake build"
+  system "/usr/bin/sudo gem install pkg/flattr_rest-0.0.1.gem"
+end

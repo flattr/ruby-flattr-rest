@@ -29,7 +29,7 @@ module FlattrRest
 
 
 
-    def initialize(params = {})
+    def initialize( params = {} )
       if defined?(Rails)
         params[:logger] = Rails.logger unless params[:logger]
       end
@@ -45,65 +45,107 @@ module FlattrRest
       )
     end
 
-    def get_request_token
+    def request_token
       @request_token ||= @consumer.get_request_token(:oauth_callback => self.callback_url)
     end
 
-    def get_access_token
-      @access_token ||= get_request_token.get_access_token(:oauth_verifier => self.oauth_verifier)
+    def access_token
+      unless @access_token
+        if @access_token_params
+          @access_token = OAuth::AccessToken.from_hash(@consumer, @access_token_params)
+        else
+          @access_token = request_token.access_token(:oauth_verifier => self.oauth_verifier)
+        end
+      end
+      @access_token
+    end
+
+    def access_token_params
+      unless @access_token
+        access_token
+      end
+      {:oauth_token => @access_token.token, :oauth_token_secret => @access_token.secret}
     end
 
     def authorize_url
-      get_request_token.authorize_url
+      request_token.authorize_url
     end
 
-    def user_info
-      resp = get '/user/me'
+    def user_info user_id = 'me'
+      unless user_id.eql? 'me'
+        user_id = "get/id/#{user_id}"
+      end
+        resp = get "/user/#{user_id}"
+      parse_response(resp.body,'user')
     end
 
     def user_things
-      resp = things
+      things
     end
 
-    def things(params = {})
+    def categories 
+      resp = get '/feed/categories'
+      parse_response(resp.body,'categories')
+    end
+
+    def languages
+      resp = get '/feed/languages'
+      parse_response(resp.body,'languages')
+    end
+
+    def things( params = {} )
       if params.empty?
-        get "/thing/listbyuser/id/"
+        resp = get "/thing/listbyuser/id/"
+        parse_response(resp.body, "things")
       elsif params[:user_id]
-        get "/thing/listbyuser/id/#{params[:user_id]}"
+        resp = get "/thing/listbyuser/id/#{params[:user_id]}"
+        parse_response(resp.body, "things")
       elsif params[:id]
-        get "/thing/get/id/#{params[:id]}"
+        resp = get "/thing/get/id/#{params[:id]}"
+        parse_response(resp.body, "thing")
       else
         raise FlattrRest::Exception, "could not determine which path to get"
       end
     end
 
-
-    def get(path)
-      resp = get_access_token.get "/rest/#{api_version}#{path}"
+    def get( path )
+      resp = access_token.get "/rest/#{api_version}#{path}"
       logger.info "get #{path} resulted in #{resp.class}: #{resp.body}" if debug?
-      return parse_response(resp.body)
+      resp
     end
 
-    def parse_response(xml_string)
-      doc = Nokogiri::XML.parse(xml_string)
+    def parse_response( xml_string, parse_type )
+      begin
+        doc = Nokogiri::XML.parse(xml_string)
+      rescue
+        raise FlattrRest::Exception, "unable to parse response"
+      end
 
-      user_node = doc.xpath "flattr/user"
-      if !user_node.empty?
-        logger.info "will create a user object based on #{user_node.to_s}" if debug?
-        User.from_node(user_node.first)
-      else
-        things = doc.xpath "flattr/thing"
-        unless things.empty?
-          if things.size > 1
-            things.collect do |t|
-              Thing.from_node(t)
-            end
-          else
-            Thing.from_node things.first
-          end
-        else
-          logger.info "unable to find any useful info from #{doc.to_s}" if debug?
+      result = nil
+      case parse_type
+      when 'user'
+        User.from_node doc.xpath('flattr/user').first
+
+      when 'thing'
+        Thing.from_node doc.xpath("flattr/thing").first
+
+      when 'things'
+        doc.xpath("flattr/thing").collect do |node|
+          Thing.from_node node
         end
+
+      when 'languages'
+        doc.xpath("flattr/languages/language").collect do |node|
+          Language.from_node node
+        end
+
+      when 'categories'
+        doc.xpath("flattr/categories/category").collect do |node|
+          Category.from_node node
+        end
+
+      else
+        raise FlattrRest::Exception, "unable to reconize the parse_type"
       end
     end
 

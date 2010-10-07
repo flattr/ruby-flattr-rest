@@ -1,6 +1,6 @@
 module FlattrRest
 
-  class Amodel
+  class Model
 
     def initialize(params = {})
       params.each do |k, v|

@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<flattr>
+    <version>
+        0.0.1
+    </version>
+    <languages>
+        <language>
+            <id>
+                sq_AL
+            </id>
+            <name>
+                Albanian
+            </name>
+
+        </language>
+        <language>
+            <id>
+                ar_DZ
+            </id>
+            <name>
+                Arabic
+            </name>
+
+        </language>
+        <language>
+            <id>
+                be_BY
+            </id>
+            <name>
+                Belarusian
+            </name>
+
+        </language>
+        <language>
+            <id>
+                bg_BG
+            </id>
+            <name>
+                Bulgarian
+            </name>
+
+        </language>
+        <language>
+            <id>
+                ca_ES
+            </id>
+            <name>
+                Catalan
+            </name>
+
+        </language>
+        <language>
+            <id>
+                zh_CN
+            </id>
+            <name>
+                Chinese
+            </name>
+
+        </language>
+        <language>
+            <id>
+                hr_HR
+            </id>
+            <name>
+                Croatian
+            </name>
+
+        </language>
+        <language>
+            <id>
+                cs_CZ
+            </id>
+            <name>
+                Czech
+            </name>
+
+        </language>
+        <language>
+            <id>
+                da_DK
+            </id>
+            <name>
+                Danish
+            </name>
+
+        </language>
+        <language>
+            <id>
+                nl_NL
+            </id>
+            <name>
+                Dutch
+            </name>
+
+        </language>
+        <language>
+            <id>
+                en_GB
+            </id>
+            <name>
+                English
+            </name>
+
+        </language>
+        <language>
+            <id>
+                et_EE
+            </id>
+            <name>
+                Estonian
+            </name>
+
+        </language>
+        <language>
+            <id>
+                fi_FI
+            </id>
+            <name>
+                Finnish
+            </name>
+
+        </language>
+        <language>
+            <id>
+                fr_FR
+            </id>
+            <name>
+                French
+            </name>
+
+        </language>
+        <language>
+            <id>
+                de_DE
+            </id>
+            <name>
+                German
+            </name>
+
+        </language>
+        <language>
+            <id>
+                el_GR
+            </id>
+            <name>
+                Greek
+            </name>
+
+        </language>
+        <language>
+            <id>
+                iw_IL
+            </id>
+            <name>
+                Hebrew
+            </name>
+
+        </language>
+        <language>
+            <id>
+                hi_IN
+            </id>
+            <name>
+                Hindi
+            </name>
+
+        </language>
+        <language>
+            <id>
+                hu_HU
+            </id>
+            <name>
+                Hungarian
+            </name>
+
+        </language>
+        <language>
+            <id>
+                is_IS
+            </id>
+            <name>
+                Icelandic
+            </name>
+
+        </language>
+        <language>
+            <id>
+                in_ID
+            </id>
+            <name>
+                Indonesian
+            </name>
+
+        </language>
+        <language>
+            <id>
+                ga_IE
+            </id>
+            <name>
+                Irish
+            </name>
+
+        </language>
+        <language>
+            <id>
+                it_IT
+            </id>
+            <name>
+                Italian
+            </name>
+
+        </language>
+        <language>
+            <id>
+                ja_JP
+            </id>
+            <name>
+                Japanese
+            </name>
+
+        </language>
+        <language>
+            <id>
+                ko_KR
+            </id>
+            <name>
+                Korean
+            </name>
+
+        </language>
+        <language>
+            <id>
+                lv_LV
+            </id>
+            <name>
+                Latvian
+            </name>
+
+        </language>
+        <language>
+            <id>
+                lt_LT
+            </id>
+            <name>
+                Lithuanian
+            </name>
+
+        </language>
+        <language>
+            <id>
+                mk_MK
+            </id>
+            <name>
+                Macedonian
+            </name>
+
+        </language>
+        <language>
+            <id>
+                ms_MY
+            </id>
+            <name>
+                Malay
+            </name>
+
+        </language>
+        <language>
+            <id>
+                mt_MT
+            </id>
+            <name>
+                Maltese
+            </name>
+
+        </language>
+        <language>
+            <id>
+                no_NO
+            </id>
+            <name>
+                Norwegian
+            </name>
+
+        </language>
+        <language>
+            <id>
+                pl_PL
+            </id>
+            <name>
+                Polish
+            </name>
+
+        </language>
+        <language>
+            <id>
+                pt_PT
+            </id>
+            <name>
+                Portuguese
+            </name>
+
+        </language>
+        <language>
+            <id>
+                ro_RO
+            </id>
+            <name>
+                Romanian
+            </name>
+
+        </language>
+        <language>
+            <id>
+                ru_RU
+            </id>
+            <name>
+                Russian
+            </name>
+
+        </language>
+        <language>
+            <id>
+                sr_RS
+            </id>
+            <name>
+                Serbian
+            </name>
+
+        </language>
+        <language>
+            <id>
+                sk_SK
+            </id>
+            <name>
+                Slovak
+            </name>
+
+        </language>
+        <language>
+            <id>
+                sl_SI
+            </id>
+            <name>
+                Slovenian
+            </name>
+
+        </language>
+        <language>
+            <id>
+                es_ES
+            </id>
+            <name>
+                Spanish
+            </name>
+
+        </language>
+        <language>
+            <id>
+                es_GL
+            </id>
+            <name>
+                Galician
+            </name>
+
+        </language>
+        <language>
+            <id>
+                sv_SE
+            </id>
+            <name>
+                Swedish
+            </name>
+
+        </language>
+        <language>
+            <id>
+                th_TH
+            </id>
+            <name>
+                Thai
+            </name>
+
+        </language>
+        <language>
+            <id>
+                tr_TR
+            </id>
+            <name>
+                Turkish
+            </name>
+
+        </language>
+        <language>
+            <id>
+                uk_UA
+            </id>
+            <name>
+                Ukrainian
+            </name>
+
+        </language>
+        <language>
+            <id>
+                vi_VN
+            </id>
+            <name>
+                Vietnamese
+            </name>
+
+        </language>
+
+    </languages>
+
+</flattr>
+
+
