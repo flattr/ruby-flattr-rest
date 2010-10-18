@@ -46,7 +46,9 @@ module FlattrRest
     end
 
     def request_token
-      @request_token ||= @consumer.get_request_token(:oauth_callback => self.callback_url)
+      @request_token ||= @consumer.get_request_token(:oauth_callback => self.callback_url,
+                                                     :access_scope => 'read,publish,click,extendedread'
+                                                    )
     end
 
     def access_token
@@ -54,7 +56,9 @@ module FlattrRest
         if @access_token_params
           @access_token = OAuth::AccessToken.from_hash(@consumer, @access_token_params)
         else
-          @access_token = request_token.access_token(:oauth_verifier => self.oauth_verifier)
+          @access_token = request_token.get_access_token(:oauth_verifier => self.oauth_verifier,
+                                                         :access_scope => 'read,publish,click,extendedread'
+                                                        )
         end
       end
       @access_token
@@ -68,7 +72,7 @@ module FlattrRest
     end
 
     def authorize_url
-      request_token.authorize_url
+      request_token.authorize_url+"&access_scope=read,publish,click,extendedread"
     end
 
     def user_info user_id = 'me'
@@ -108,9 +112,29 @@ module FlattrRest
       end
     end
 
+    def submit_thing t
+      inner = ''
+      t[:hidden] = 0 unless t[:hidden]
+      [:url,:title,:category,:description,:language,:hidden].each do |key|
+        inner += "<#{key}><![CDATA[#{t[key]}]]></#{key}>"
+      end
+      tags = t[:tags].split(",")
+      tags_inner = ""
+      tags.each do |tag|
+        tags_inner+= "<tag><![CDATA[#{tag.strip}]]></tag>"
+      end
+      xml_string = "<?xml version=\"1.0\" encoding=\"utf-8\"?><thing>#{inner}<tags type=\"Array\">#{tags_inner}</tags></thing>"
+      post( "/thing/register", xml_string )
+    end
+
+    def post( path, xml_string)
+      resp = access_token.post( "#{base_path}#{path}", :data => xml_string )
+      resp
+    end
+
+
     def get( path )
-      resp = access_token.get "/rest/#{api_version}#{path}"
-      logger.info "get #{path} resulted in #{resp.class}: #{resp.body}" if debug?
+      resp = access_token.get "#{base_path}#{path}"
       resp
     end
 
@@ -147,6 +171,10 @@ module FlattrRest
       else
         raise FlattrRest::Exception, "unable to reconize the parse_type"
       end
+    end
+
+    def base_path
+      "/rest/#{api_version}"
     end
 
     def debug?
