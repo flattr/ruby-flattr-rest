@@ -100,13 +100,18 @@ module FlattrRest
     def things( params = {} )
       if params.empty?
         resp = get "/thing/listbyuser/id/"
-        parse_response(resp.body, "things")
+        parse_response( resp.body, "things" )
       elsif params[:user_id]
         resp = get "/thing/listbyuser/id/#{params[:user_id]}"
-        parse_response(resp.body, "things")
+        parse_response( resp.body, "things" )
       elsif params[:id]
         resp = get "/thing/get/id/#{params[:id]}"
-        parse_response(resp.body, "thing")
+        parse_response( resp.body, "thing" )
+      elsif params[:q]
+        query_uri = "/thing/search/q/#{CGI.escape(params[:q])}"
+        resp = get query_uri
+        #File.open('/tmp/search_things.xml','w'){|f| f.puts resp.body}
+        parse_response( resp.body, "things" )
       else
         raise FlattrRest::Exception, "could not determine which path to get"
       end
